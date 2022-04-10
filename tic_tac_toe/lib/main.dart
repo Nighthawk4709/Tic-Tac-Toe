@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: title,
         theme: ThemeData(
-          primaryColor: Colors.blue,
+          primaryColor: Colors.green,
         ),
         home: MainPage(title: title),
       );
@@ -75,10 +75,15 @@ class _MainPageState extends State<MainPage> {
           title: Text(widget.title),
         ),
         body: Column(
+          children:[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Column(children: [Center(child: Text("Player 0"),)],),Column(children: [Center(child: Text("Player 1"),)],),
+            Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: Utils.modelBuilder(matrix, (x, value) => buildRow(x)),
-        ),
-      );
+        )]),
+  ]));
 
   Widget buildRow(int x) {
     final values = matrix[x];
