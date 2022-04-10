@@ -1,6 +1,6 @@
 # tic_tac_toe
 
-A new Flutter project.
+Basic layout of tic_tac_toe game for RELEVEL phase 2.
 
 ## Getting Started
 
