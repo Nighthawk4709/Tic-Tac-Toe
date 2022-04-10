@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Utils {
+class TicTacToeLogicUtil {
   static List<Widget> modelBuilder<M>(
           List<M> models, Widget Function(int index, M model) builder) =>
       models

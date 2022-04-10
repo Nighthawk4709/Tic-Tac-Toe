@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'utility.dart';
@@ -74,28 +76,28 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: getBackgroundColor(),
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
           title: Text(widget.title),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children:[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:[Center(child: Text("Tic-TAC-Toe"),)]),
+           
             Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: Utils.modelBuilder(matrix, (x, value) => buildRow(x)),
+          children: TicTacToeLogicUtil.modelBuilder(matrix, (x, value) => buildRow(x)),
         ),
         Column(children: [
           Column(children:[
-          Center(child: Text("Score"),
+          Center(child: Text("Score",style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold)),
           ),
           
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text("Player X score is : $scoreX")],),
+            children: [Text("Player X score is : $scoreX",style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),)],),
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text("Player O score is : $scoreY")])
+              children: [Text("Player O score is : $scoreY",style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold))])
         ])])]));
 
   Widget buildRow(int x) {
@@ -103,7 +105,7 @@ class _MainPageState extends State<MainPage> {
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: Utils.modelBuilder(
+      children: TicTacToeLogicUtil.modelBuilder(
         values,
         (y, value) => buildField(x, y),
       ),
