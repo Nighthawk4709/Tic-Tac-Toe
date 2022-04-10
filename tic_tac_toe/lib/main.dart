@@ -98,7 +98,13 @@ class _MainPageState extends State<MainPage> {
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text("Player O score is : $scoreY",style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold))])
-        ])])]));
+        ])]),
+        SizedBox(height:10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:[
+          
+          ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.history), label: Text("Look for match history from here"))])]));
 
   Widget buildRow(int x) {
     final values = matrix[x];
