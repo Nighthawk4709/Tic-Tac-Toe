@@ -44,6 +44,8 @@ class Player {
 }
 
 class _MainPageState extends State<MainPage> {
+  late int scoreX =0;
+  late int scoreY = 0;
   static const countMatrix = 3;
   static const double size = 92;
 
@@ -78,12 +80,23 @@ class _MainPageState extends State<MainPage> {
           children:[
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Column(children: [Center(child: Text("Player 0"),)],),Column(children: [Center(child: Text("Player 1"),)],),
+              children:[Center(child: Text("Tic-TAC-Toe"),)]),
             Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: Utils.modelBuilder(matrix, (x, value) => buildRow(x)),
-        )]),
-  ]));
+        ),
+        Column(children: [
+          Column(children:[
+          Center(child: Text("Score"),
+          ),
+          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Text("Player X score is : $scoreX")],),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Text("Player O score is : $scoreY")])
+        ])])]));
 
   Widget buildRow(int x) {
     final values = matrix[x];
@@ -100,9 +113,9 @@ class _MainPageState extends State<MainPage> {
   Color getFieldColor(String value) {
     switch (value) {
       case Player.O:
-        return Colors.blue;
+        return Colors.teal;
       case Player.X:
-        return Colors.red;
+        return Colors.pink;
       default:
         return Colors.white;
     }
@@ -135,6 +148,11 @@ class _MainPageState extends State<MainPage> {
       });
 
       if (isWinner(x, y)) {
+        if(newValue == Player.X) {
+          scoreX += 1;
+        } else  if(newValue == Player.O){
+          scoreY +=1;
+        }
         showEndDialog('Player $newValue Won');
       } else if (isEnd()) {
         showEndDialog('Undecided Game');
